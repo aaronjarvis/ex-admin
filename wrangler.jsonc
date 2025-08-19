@@ -1,0 +1,16 @@
+{
+  "compatibility_date": "2025-04-01",
+  "main": "src/index.ts",
+  "name": "ex-admin",
+  "upload_source_maps": true,
+  "observability": {
+    "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "ex-admin-db",
+      "database_id": "1d06ec60-d30d-436b-a861-cbddc2aaa027"
+    }
+  ]
+}
