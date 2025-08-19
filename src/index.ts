@@ -1,8 +1,9 @@
 import { ApiException, fromHono } from "chanfana";
 import { Hono } from "hono";
 import { tasksRouter } from "./endpoints/tasks/router";
+import { unitsRouter } from "./endpoints/units/router";
+import { jobFunctionsRouter } from "./endpoints/jobFunctions/router";
 import { ContentfulStatusCode } from "hono/utils/http-status";
-import { DummyEndpoint } from "./endpoints/dummyEndpoint";
 
 // Start a Hono app
 const app = new Hono<{ Bindings: Env }>();
@@ -33,9 +34,9 @@ const openapi = fromHono(app, {
   docs_url: "/",
   schema: {
     info: {
-      title: "My Awesome API",
-      version: "2.0.0",
-      description: "This is the documentation for my awesome API.",
+      title: "Employee Experience API",
+      version: "0.0.1",
+      description: "This is the documentation for Employee Experience API.",
     },
   },
 });
@@ -43,8 +44,9 @@ const openapi = fromHono(app, {
 // Register Tasks Sub router
 openapi.route("/tasks", tasksRouter);
 
-// Register other endpoints
-openapi.post("/dummy/:slug", DummyEndpoint);
+openapi.route("/units", unitRouter);
+
+openapi.route("/job-functions", jobFunctionsRouter);
 
 // Export the Hono app
 export default app;
